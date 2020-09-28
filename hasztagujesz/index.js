@@ -40,6 +40,9 @@ function findTags(message) {
   return arr;
 }
 
+//const findTags = (message) => message.match(/(?<=#)[\w]+/gi);
+
+
 /* Weryfikacja */
 
 function verify(input, goal) {
