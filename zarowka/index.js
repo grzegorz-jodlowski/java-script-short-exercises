@@ -1,7 +1,5 @@
-const input = document.querySelector('.text-input');
-const mirror = document.querySelector('.mirror');
+const bulb = document.querySelector('.bulb');
+const switcher = document.querySelector('#light-toggle');
 
-const makeReflection = () => mirror.textContent = input.value.split('').reverse().join('');
-
-input.addEventListener('keyup', makeReflection)
+switcher.addEventListener('change', () => bulb.classList.toggle('bulb--on'))
 
