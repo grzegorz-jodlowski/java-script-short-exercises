@@ -37,14 +37,17 @@ const formatTime = seconds => {
 
 const renderTableRows = data => {
   tableBody.innerHTML = "";
-  data.forEach((chapter, index) => {
+
+  data.forEach(({ title, author, duration }, index) => {
     const tr = document.createElement("tr");
+    tr.style.transition = "3s";
     if (index % 2 !== 0) {
       tr.classList.add("bg-gray-100");
     }
-    tr.innerHTML = `<td class="border px-4 py-2">${chapter.title}</td>
-      <td class="border px-4 py-2">${chapter.author}</td>
-      <td class="border px-4 py-2">${formatTime(chapter.duration)}</td>`;
+    tr.innerHTML = `<td class="border px-4 py-2">${title}</td>
+      <td class="border px-4 py-2">${author}</td>
+      <td class="border px-4 py-2">${formatTime(duration)}</td>`;
+    tr.style.opacity = "0";
 
     tableBody.append(tr);
   });
@@ -58,6 +61,15 @@ const sortObjects = (a, b, direction, key) => {
   }
 };
 
+const animation = () => {
+  const trItems = document.querySelectorAll("tbody tr");
+  trItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.style.opacity = "100";
+    }, index * 75);
+  });
+};
+
 const sortByDuration = () => {
   const durationArrow = document.querySelector(".arrow-icon");
 
@@ -66,6 +78,7 @@ const sortByDuration = () => {
       sortObjects(a, b, SORT_DIRECTION_ASC, "duration")
     );
     renderTableRows(sortedChapters);
+    animation();
 
     durationArrow.classList.toggle("fa-caret-up");
     durationArrow.classList.toggle("fa-caret-down");
@@ -74,6 +87,7 @@ const sortByDuration = () => {
       sortObjects(a, b, SORT_DIRECTION_DESC, "duration")
     );
     renderTableRows(sortedChapters);
+    animation();
 
     durationArrow.classList.toggle("fa-caret-down");
     durationArrow.classList.toggle("fa-caret-up");
