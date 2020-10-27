@@ -3,6 +3,8 @@ const COOKIE_DAYS = 1;
 const agreeButton = document.querySelector(".cookie-button");
 const agreeBox = document.querySelector(".cookie-box");
 
+
+
 const setCookie = (name, value, days) => {
   if (days) {
     const date = new Date();
@@ -28,7 +30,7 @@ const eraseCookie = (name) => {
 }
 
 const isExpired = () => {
-  return Date.now() > new Date(getCookie('great_cookie_expires')); // true if time1 is later
+  return Date.now() > new Date(getCookie('great_cookie_expires'));
 }
 
 const checkCookie = () => {
@@ -38,7 +40,9 @@ const checkCookie = () => {
 }
 
 const agreeCookie = () => {
-  agreeBox.classList.add("hidden");
+  agreeBox.classList.add("cookie-box--hidden");
+  setTimeout(() => agreeBox.classList.add('hidden'), 1000);
+
   setCookie('great_cookie', 'agree', COOKIE_DAYS)
 };
 
