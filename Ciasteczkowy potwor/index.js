@@ -34,8 +34,8 @@ const isExpired = () => {
 }
 
 const checkCookie = () => {
-  if (getCookie('great_cookie') === 'agree' && !isExpired()) {
-    agreeBox.classList.add("hidden");
+  if (getCookie('great_cookie') !== null && isExpired()) {
+    agreeBox.classList.remove("hidden");
   }
 }
 
