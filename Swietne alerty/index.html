@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>swietne-alerty</title>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="bg-gray-900 p-12 items-top">
+
+  <div class="buttons -m-2 text-center">
+    <input name='message' id='message' type='text' class='notification-input rounded-full p-2'>
+    <div class="p-2">
+      <button
+        class="button-error inline-flex items-center bg-white leading-none text-red-600 rounded-full p-2 shadow text-teal text-sm">Error</button>
+      <button
+        class="button-warning inline-flex items-center bg-white leading-none text-yellow-600 rounded-full p-2 shadow text-teal text-sm">Warning</button>
+      <button
+        class="button-success inline-flex items-center bg-white leading-none text-green-600 rounded-full p-2 shadow text-teal text-sm">Success</button>
+    </div>
+  </div>
+
+  <div class="notifications -m-2 text-center">
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
