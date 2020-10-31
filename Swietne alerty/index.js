@@ -25,7 +25,7 @@ class Notification {
     }
 
     const notification = document.createElement("div");
-    notification.classList.add("p-2");
+    notification.className = "alert p-2";
     notification.innerHTML = `
       <div class="inline-flex items-center bg-white leading-none text-${color}-600 rounded-full p-2 shadow text-teal text-sm">
         <span class="inline-flex bg-${color}-600 text-white rounded-full h-6 px-3 justify-center items-center">${this.type
@@ -33,16 +33,29 @@ class Notification {
         <span class="inline-flex px-2">${this.message}</span>
       </div>`;
 
-    const notificationBox = document.querySelector(".notifications");
+    notification.classList.add(".addAlert");
 
-    notificationBox.appendChild(notification);
-    notification.addEventListener("click", () => this.destroy(notification));
-    setTimeout(() => this.destroy(notification), 10000);
-    document.querySelector(".notification-input").value = "";
+    this.addToQueue(notification);
   }
 
   destroy(notification) {
+    notification.classList.add(".removeAlert");
     notification.remove();
+  }
+
+  addToQueue(notification) {
+    const notifications = document.querySelectorAll(".notifications > div");
+    console.log(notifications.length);
+    if (notifications.length < 3) {
+      const notificationBox = document.querySelector(".notifications");
+
+      notificationBox.appendChild(notification);
+      notification.addEventListener("click", () => this.destroy(notification));
+      setTimeout(() => this.destroy(notification), 10000);
+      document.querySelector(".notification-input").value = "";
+    } else {
+      setTimeout(() => this.addToQueue(notification), 1000);
+    }
   }
 }
 
